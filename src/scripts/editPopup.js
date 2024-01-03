@@ -1,19 +1,29 @@
+import { openPopup } from "./components/modal"
+import { closePopup } from "./components/modal"
+
+
 const editPopup = () => {
     const editPopup = document.querySelector('.popup_type_edit')
     const openEditPopupBtn = document.querySelector('.profile__edit-button')
-    const closeEditPopupBtn = document.querySelector('.popup__close')
+    const closePopupBtn = document.querySelector('.popup__close')
 
-    function openEditPopup(){
-        editPopup.classList.add('popup_is-opened')
-    }
+    openEditPopupBtn.addEventListener('click', () => {
+        openPopup(editPopup)
+    });
 
-    function closeEditPopup(){
-        editPopup.classList.remove('popup_is-opened')
-    }
+    closePopupBtn.addEventListener('click', (evt) => {
+        closePopup(evt, editPopup)
+    })
+    editPopup.addEventListener('click', (evt) => {
+        closePopup(evt, editPopup)
+    })
 
-    openEditPopupBtn.addEventListener('click', openEditPopup);
-    closeEditPopupBtn.addEventListener('click', closeEditPopup)
 }
 
 export default editPopup
+
+
+
+
+
 

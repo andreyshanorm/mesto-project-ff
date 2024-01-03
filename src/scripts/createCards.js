@@ -1,4 +1,5 @@
 import { cardsArray } from "./cards";
+import { openImagePopup } from "./components/modal"
 
 const createCards = () => {
     const cardContainer = document.querySelector('.places__list')
@@ -25,7 +26,7 @@ const createCards = () => {
 
     function renderCards(){
         cardsArray.forEach((item) => {
-            const card = createCard(item, deleteCard)
+            const card = createCard(item, deleteCard, openImagePopup)
             cardContainer.append(card)
         })
     }
