@@ -1,5 +1,15 @@
+
 export function openPopup(popup){
     popup.classList.add('popup_is-opened')
+}
+
+export function closeModalByEsc(popup){
+    document.addEventListener('keydown', (evt) => {
+        if (evt.keyCode === 27){
+            closePopup(evt, popup)
+        }
+        document.removeEventListener('keydown', closeModalByEsc)
+    })
 }
 
 export function closePopup(evt, popup){
@@ -29,9 +39,6 @@ export function openImagePopup(){
         })
 
     })
-    document.addEventListener('keydown', (evt) => {
-        if (evt.keyCode === 27){
-            closePopup(evt, imagePopupCont)
-        }
-    })
+    closeModalByEsc(imagePopupCont)
 }
+

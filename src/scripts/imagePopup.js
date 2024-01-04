@@ -17,7 +17,6 @@ const imagePopup = () => {
         closePopup(evt, imagePopupCont)
     })
 
-    
 }
 
 export default imagePopup

@@ -1,6 +1,6 @@
 import { openPopup } from "./components/modal"
 import { closePopup } from "./components/modal"
-
+import { closeModalByEsc } from "./components/modal"
 
 const editPopup = () => {
     const editPopup = document.querySelector('.popup_type_edit')
@@ -18,11 +18,7 @@ const editPopup = () => {
         closePopup(evt, editPopup)
     })
 
-    document.addEventListener('keydown', (evt) => {
-        if (evt.keyCode === 27){
-            closePopup(evt, editPopup)
-        }
-    })
+    closeModalByEsc(editPopup)
 
 }
 

@@ -1,5 +1,6 @@
 import { openPopup } from "./components/modal"
 import { closePopup } from "./components/modal"
+import { closeModalByEsc } from "./components/modal"
 
 const newCardPopup = () => {
     const newCardPopup = document.querySelector('.popup_type_new-card')
@@ -8,6 +9,11 @@ const newCardPopup = () => {
 
     openNewCardPopupBtn.addEventListener('click', () => {
         openPopup(newCardPopup)
+        document.addEventListener('keydown', (evt) => {
+            if (evt.keyCode === 27){
+                closePopup(evt, newCardPopup)
+            }
+        })
     });
 
     closePopupBtn.addEventListener('click', (evt) => {
@@ -18,11 +24,7 @@ const newCardPopup = () => {
         closePopup(evt, newCardPopup)
     })
 
-    document.addEventListener('keydown', (evt) => {
-        if (evt.keyCode === 27){
-            closePopup(evt, newCardPopup)
-        }
-    })
+    // closePopup(newCardPopup)
 }
 
 export default newCardPopup
