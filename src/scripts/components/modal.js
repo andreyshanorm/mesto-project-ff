@@ -3,18 +3,19 @@ export function openPopup(popup){
 }
 
 export function closePopup(evt, popup){
-    if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')){
+    const target = evt.target
+    if(target.classList.contains('popup') || target.nodeName === 'BUTTON' || target.nodeName === 'BODY'){
         popup.classList.remove('popup_is-opened')
     }
 }
 
 export function openImagePopup(){
     const imagePopupCont = document.querySelector('.popup_type_image')
-    const cards = document.querySelectorAll('.places__item')
+    const cardsImages = document.querySelectorAll('.card__image')
     const imagePopupContent = document.querySelector('.popup__image')
     const popupCaption = imagePopupCont.querySelector('.popup__caption')
 
-    cards.forEach((item)=>{
+    cardsImages.forEach((item)=>{
     
         item.addEventListener('click', (evt) => {
             const src = evt.target.getAttribute('src')
@@ -22,7 +23,15 @@ export function openImagePopup(){
             imagePopupContent.src = src;
             imagePopupContent.alt = alt;
             popupCaption.textContent = alt;
-            openPopup(imagePopupCont)
+            if(!evt.target.classList.contains('card__delete-button')){
+                openPopup(imagePopupCont)
+            }
         })
+
+    })
+    document.addEventListener('keydown', (evt) => {
+        if (evt.keyCode === 27){
+            closePopup(evt, imagePopupCont)
+        }
     })
 }

@@ -18,6 +18,12 @@ const editPopup = () => {
         closePopup(evt, editPopup)
     })
 
+    document.addEventListener('keydown', (evt) => {
+        if (evt.keyCode === 27){
+            closePopup(evt, editPopup)
+        }
+    })
+
 }
 
 export default editPopup

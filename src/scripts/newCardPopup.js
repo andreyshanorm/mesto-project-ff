@@ -17,6 +17,12 @@ const newCardPopup = () => {
     newCardPopup.addEventListener('click', (evt) => {
         closePopup(evt, newCardPopup)
     })
+
+    document.addEventListener('keydown', (evt) => {
+        if (evt.keyCode === 27){
+            closePopup(evt, newCardPopup)
+        }
+    })
 }
 
 export default newCardPopup

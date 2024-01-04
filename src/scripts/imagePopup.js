@@ -16,6 +16,8 @@ const imagePopup = () => {
     imagePopupCont.addEventListener('click', (evt) => {
         closePopup(evt, imagePopupCont)
     })
+
+    
 }
 
 export default imagePopup
