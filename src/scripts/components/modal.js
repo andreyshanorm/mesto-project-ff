@@ -15,15 +15,17 @@ export function closeModalByEsc(popup){
 
 export function closePopup(evt, popup){
     const target = evt.target
-    if(target.classList.contains('popup') || target.nodeName === 'BUTTON' || target.nodeName === 'BODY'){
+    const acceptablePointers = ['BUTTON', 'BODY', 'FORM']
+    if(target.classList.contains('popup') || acceptablePointers.includes(target.nodeName)){
         setTimeout(()=>{popup.classList.remove('popup_is-animated')}, 600)
         popup.classList.remove('popup_is-opened')
     }
 }
 
 export function openImagePopup(item){
-
     const imagePopup = document.querySelector('.popup_type_image')
+
+
     const imagePopupImg = imagePopup.querySelector('.popup__image')
     const imagePopupCaption = imagePopup.querySelector('.popup__caption')
 

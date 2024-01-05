@@ -1,17 +1,14 @@
 import { cardContainer } from '../../createCards'
-import { deleteCard } from "../card";
-import { createCard } from "../card";
-import { likeCard } from '../card';
-import { openImagePopup } from '../modal';
+import { deleteCard, createCard, likeCard } from '../card';
+import { openImagePopup, closePopup } from '../modal';
+import { newCardPopupVar } from '../../constants';
 
-export const addCardFormVar = document.querySelector('form[name="new-place"]')
 
-export function addCardForm() {
-    const addCardNameInput = addCardFormVar.querySelector('.popup__input_type_card-name')
-    const addCardLinkInput = addCardFormVar.querySelector('.popup__input_type_url')
+export function addCardForm(form) {
+    const addCardNameInput = form.querySelector('.popup__input_type_card-name')
+    const addCardLinkInput = form.querySelector('.popup__input_type_url')
     
-
-    addCardFormVar.addEventListener('submit', (evt)=> {
+    form.addEventListener('submit', (evt)=> {
         evt.preventDefault()
         const data = {
             name: addCardNameInput.value,
@@ -19,6 +16,7 @@ export function addCardForm() {
         }
         const additonalCard = createCard(data, deleteCard, likeCard, openImagePopup)
         cardContainer.prepend(additonalCard)
+        closePopup(evt, newCardPopupVar)
     })
 
 }
