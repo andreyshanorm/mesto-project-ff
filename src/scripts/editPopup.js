@@ -5,17 +5,15 @@ import { closeModalByEsc } from "./components/modal"
 const editPopup = () => {
     const editPopup = document.querySelector('.popup_type_edit')
     const openEditPopupBtn = document.querySelector('.profile__edit-button')
-    const closePopupBtn = document.querySelector('.popup__close')
 
     openEditPopupBtn.addEventListener('click', () => {
         openPopup(editPopup)
     });
 
-    closePopupBtn.addEventListener('click', (evt) => {
-        closePopup(evt, editPopup)
-    })
     editPopup.addEventListener('click', (evt) => {
-        closePopup(evt, editPopup)
+        if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')){
+            closePopup(evt, editPopup)
+        }
     })
 
     closeModalByEsc(editPopup)

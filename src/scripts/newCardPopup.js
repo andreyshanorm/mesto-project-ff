@@ -2,29 +2,25 @@ import { openPopup } from "./components/modal"
 import { closePopup } from "./components/modal"
 import { closeModalByEsc } from "./components/modal"
 
+import { addCardFormVar } from "./components/forms/addCardForm"
+
 const newCardPopup = () => {
     const newCardPopup = document.querySelector('.popup_type_new-card')
     const openNewCardPopupBtn = document.querySelector('.profile__add-button')
-    const closePopupBtn = document.querySelector('.popup__close')
 
     openNewCardPopupBtn.addEventListener('click', () => {
+        addCardFormVar.reset()
         openPopup(newCardPopup)
-        document.addEventListener('keydown', (evt) => {
-            if (evt.keyCode === 27){
-                closePopup(evt, newCardPopup)
-            }
-        })
     });
 
-    closePopupBtn.addEventListener('click', (evt) => {
-        closePopup(evt, newCardPopup)
-    })
-
     newCardPopup.addEventListener('click', (evt) => {
-        closePopup(evt, newCardPopup)
+        if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')){
+            closePopup(evt, newCardPopup)
+        }
     })
 
-    // closePopup(newCardPopup)
+    closeModalByEsc(newCardPopup)
+
 }
 
 export default newCardPopup

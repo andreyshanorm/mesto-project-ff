@@ -7,7 +7,6 @@ const proileEditForm = () => {
     const editFormJobInput = proileEditForm.querySelector('.popup__input_type_description')
     const nameContainer = document.querySelector('.profile__title')
     const jobContainer = document.querySelector('.profile__description')
-
     editFormNameInput.value = `${nameContainer.textContent}`
     editFormJobInput.value = `${jobContainer.textContent}`
 
@@ -16,7 +15,6 @@ const proileEditForm = () => {
         handleFormSubmit(evt, editFormNameInput.value, editFormJobInput.value, nameContainer, jobContainer)
     })
 
-    
 }
 
 export default proileEditForm
