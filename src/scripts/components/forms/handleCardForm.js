@@ -15,7 +15,7 @@ export function handleCardForm(form) {
             name: addCardNameInput.value,
             link: addCardLinkInput.value
         }
-        const additonalCard = createCard(data, deleteCard, likeCard, openImagePopup)
+        const additonalCard = createCard(data, {deleteCard, likeCard, openImagePopup})
         cardContainer.prepend(additonalCard)
         addCardFormVar.reset()
         closePopup(newCardPopupVar)

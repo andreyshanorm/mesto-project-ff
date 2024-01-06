@@ -10,6 +10,7 @@ export function likeCard(item){
 }
 
 export function createCard(item, callBacks){
+    console.log(callBacks);
     const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
     const cardImage = cardElement.querySelector(".card__image");
     const cardLikeBtn = cardElement.querySelector('.card__like-button')
