@@ -9,7 +9,7 @@ const createCards = () => {
 
     function renderCards(){
         cardsArray.forEach((item) => {
-            const card = createCard(item, deleteCard, likeCard, openImagePopup)
+            const card = createCard(item, {deleteCard, likeCard, openImagePopup})
             cardContainer.append(card)
         })
     }

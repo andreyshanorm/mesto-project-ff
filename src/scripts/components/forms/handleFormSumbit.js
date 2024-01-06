@@ -1,5 +1,9 @@
-export function handleFormSubmit(evt, firstInput, secondInput, firstInputPlaceHolder, secondInputPlaceHolder){
+import { editPopupVar } from "../../constants"
+import { closePopup } from "../popup/closePopup"
+
+export function handleFormSubmit(evt, values){
     evt.preventDefault()
-    firstInputPlaceHolder.textContent = firstInput
-    secondInputPlaceHolder.textContent = secondInput
+    values.nameContainer.textContent = values.name;
+    values.jobContainer.textContent = values.job;
+    closePopup(editPopupVar)
 }

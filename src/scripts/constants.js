@@ -5,6 +5,8 @@ const openNewCardPopupBtn = document.querySelector('.profile__add-button')
 const addCardFormVar = document.querySelector('form[name="new-place"]')
 const proileEditFormVar = document.querySelector('form[name="edit-profile"]')
 const imagePopup = document.querySelector('.popup_type_image')
+const popups = document.querySelectorAll('.popup')
+
 
 export {
     editPopupVar,
@@ -13,5 +15,6 @@ export {
     openNewCardPopupBtn,
     addCardFormVar,
     proileEditFormVar,
-    imagePopup
+    imagePopup,
+    popups
 }

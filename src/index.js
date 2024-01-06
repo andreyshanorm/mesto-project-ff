@@ -1,17 +1,19 @@
 import './styles/index.css';
 import createCards from './scripts/createCards';
-import editPopup from './scripts/components/popup/editPopup';
-import newCardPopup from './scripts/components/popup/newCardPopup';
-import proileEditForm from './scripts/components/forms/proileEditForm';
-import { addCardForm } from './scripts/components/forms/addCardForm';
+import openEditPopup from './scripts/components/popup/openEditPopup';
+import openNewCardPopup from './scripts/components/popup/openNewCardPopup';
+import handleEditForm from './scripts/components/forms/handleEditForm';
+import { handleCardForm } from './scripts/components/forms/handleCardForm';
+import { closePopups } from './scripts/components/popup/closePopup';
 import * as constants from './scripts/constants'
 
 
 
 createCards()
-editPopup(constants.editPopupVar, constants.openEditPopupBtn)
-newCardPopup(constants.newCardPopupVar, constants.openNewCardPopupBtn)
-proileEditForm(constants.proileEditFormVar)
-addCardForm(constants.addCardFormVar)
+openEditPopup(constants.editPopupVar, constants.openEditPopupBtn)
+openNewCardPopup(constants.newCardPopupVar, constants.openNewCardPopupBtn)
+handleEditForm(constants.proileEditFormVar)
+handleCardForm(constants.addCardFormVar)
+closePopups(constants.popups)
 
 
