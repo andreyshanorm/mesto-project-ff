@@ -4,8 +4,7 @@ export function deleteCard(item){
     item.remove();
 }
 
-export function likeCard(item){
-    const currentlikeBtn = item.querySelector('.card__like-button')
+export function likeCard(currentlikeBtn){
     currentlikeBtn.classList.toggle('is-active')
 }
 
@@ -16,7 +15,7 @@ export function createCard(item, callBacks){
     const deleteBtn = cardElement.querySelector('.card__delete-button')
     callBacks.openImagePopup(cardElement)
     deleteBtn.addEventListener('click', () => {callBacks.deleteCard(cardElement)})
-    cardLikeBtn.addEventListener('click', () => {callBacks.likeCard(cardElement)})
+    cardLikeBtn.addEventListener('click', () => {callBacks.likeCard(cardLikeBtn)})
 
     cardImage.src = `${item.link}`;
     cardImage.alt = item.name;
