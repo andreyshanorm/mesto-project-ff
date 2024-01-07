@@ -2,7 +2,7 @@ import { cardContainer } from '../../createCards'
 import { deleteCard, createCard, likeCard } from '../card';
 import { openImagePopup } from '../modal';
 import { newCardPopupVar, addCardFormVar } from '../../constants';
-import { closePopup } from "../popup/closePopup"
+import { closePopup } from "../modal"
 
 
 export function handleCardForm(form) {
