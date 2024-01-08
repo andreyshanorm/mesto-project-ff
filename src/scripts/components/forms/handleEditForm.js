@@ -1,4 +1,4 @@
-import { handleFormSubmit } from "./handleFormSumbit"
+import { handleFormSubmit } from "./handleFormSubmit"
 
 
 const nameContainer = document.querySelector('.profile__title')

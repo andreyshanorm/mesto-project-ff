@@ -1,5 +1,5 @@
 import { editPopupVar } from "../../constants"
-import { closePopup } from "../popup/closePopup"
+import { closePopup } from "../modal"
 
 export function handleFormSubmit(evt, values){
     evt.preventDefault()

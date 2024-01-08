@@ -4,8 +4,8 @@ export function deleteCard(item){
     item.remove();
 }
 
-export function likeCard(currentlikeBtn){
-    currentlikeBtn.classList.toggle('is-active')
+export function likeCard(currentLikeBtn){
+    currentLikeBtn.classList.toggle('is-active')
 }
 
 export function createCard(item, callBacks){
