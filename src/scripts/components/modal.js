@@ -1,3 +1,5 @@
+import { formValidationConfig, clearValidation } from "./validation"
+
 
 const imagePopup = document.querySelector('.popup_type_image')
 const imagePopupImg = imagePopup.querySelector('.popup__image')
@@ -32,12 +34,14 @@ export function openPopup(popup){
     document.addEventListener('keydown', handleEscape)
     setTimeout(()=>{popup.classList.add('popup_is-opened')}, 0)
     popup.classList.add('popup_is-animated')
+    
 }
 
 
 export function closePopup(popup){
     setTimeout(()=>{popup.classList.remove('popup_is-animated')}, 800)
     popup.classList.remove('popup_is-opened')
+    clearValidation(popup, formValidationConfig)
     document.removeEventListener('keydown', handleEscape)
 }
 
@@ -49,6 +53,7 @@ export function handleEscape(evt){
 }
 
 export function closePopups(popups){
+
     if(popups.length > 1){
         popups.forEach(handlePopupClick)
     }else{

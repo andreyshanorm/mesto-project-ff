@@ -5,10 +5,11 @@ import { newCardPopupVar, addCardFormVar } from '../../constants';
 import { closePopup } from "../modal"
 
 
+
 export function handleCardForm(form) {
     const addCardNameInput = form.querySelector('.popup__input_type_card-name')
     const addCardLinkInput = form.querySelector('.popup__input_type_url')
-    
+    addCardNameInput.value = ''
     form.addEventListener('submit', (evt)=> {
         evt.preventDefault()
         const data = {
@@ -19,8 +20,14 @@ export function handleCardForm(form) {
         cardContainer.prepend(additonalCard)
         addCardFormVar.reset()
         closePopup(newCardPopupVar)
+        
     })
+}
 
-    
+export function clearInputs(form){
+    const addCardNameInput = form.querySelector('.popup__input_type_card-name')
+    const addCardLinkInput = form.querySelector('.popup__input_type_url')
+    addCardNameInput.value = ''
+    addCardLinkInput.value = ''
 }
 

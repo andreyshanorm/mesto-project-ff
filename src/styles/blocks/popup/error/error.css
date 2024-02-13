@@ -1,0 +1,4 @@
+.popup__error.popup__error_visible{
+    color: red;
+    padding-top: 2px;
+}
