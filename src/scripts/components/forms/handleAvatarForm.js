@@ -11,7 +11,7 @@ export function handleAvatarForm(form) {
             link: addAvatarLinkInput.value
         }
         changeAvatar(data.link, apiConfig)
-        setTimeout(renderProfile, 100);
+        // setTimeout(renderProfile, 200);
         closePopup(form)
     })
     

@@ -197,5 +197,5 @@ export const getProfileInfo = () => {
             }
         })
         renderProfile(profile);
-        createCards(cards)
+        createCards(cards, profile)
     })
