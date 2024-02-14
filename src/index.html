@@ -14,11 +14,14 @@
   </header>
   <main class="content">
     <section class="profile page__section">
-      <img class="profile__image" src="<%=require('./images/avatar.jpg')%>">
+      <div class="avatar__container">
+        <img class="profile__image" src="">
+        <img class="change__icon inActive" src="<%=require('./images/ChangePhoto.svg')%>" alt="">
+      </div>
       <div class="profile__info">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <h1 class="profile__title"></h1>
         <button class="profile__edit-button" type="button"></button>
-        <p class="profile__description">Исследователь океана</p>
+        <p class="profile__description"></p>
       </div>
       <button class="profile__add-button" type="button"></button>
     </section>
@@ -29,9 +32,20 @@
   </main>
   <footer class="footer page__section">
     <p class="footer__copyright">
-      © 2021 Mesto Russia
+      © 2024 Mesto Russia
     </p>
   </footer>
+  <div class="popup popup_type_change_photo">
+    <div class="popup__content">
+      <button type="button" class="popup__close"></button>
+      <h3 class="popup__title">Обновить аватар </h3>
+      <form class="popup__form" name="change-avatar" novalidate>
+        <input id="change-avatar-url" type="url" name="name" class="popup__input popup__input_type_avatar" placeholder="Ссылка" minlength="8" maxlength="200" required>
+        <span id="change-avatar-url-error" class="popup__error"></span>
+        <button type="submit" class="button popup__button" disabled>Сохранить</button>
+      </form>
+    </div>
+  </div>
   <div class="popup popup_type_edit">
     <div class="popup__content">
       <button type="button" class="popup__close"></button>

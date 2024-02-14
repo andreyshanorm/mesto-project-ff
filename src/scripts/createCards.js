@@ -1,20 +1,15 @@
-import { cardsArray } from "./cards";
-import { openImagePopup } from "./components/modal"
+import { openImagePopup } from "./components/modal";
 import { deleteCard, createCard, likeCard } from "./components/card";
 
-export const cardTemplate = document.querySelector('#card-template').content;
-export const cardContainer = document.querySelector('.places__list')
+export const cardTemplate = document.querySelector("#card-template").content;
+export const cardContainer = document.querySelector(".places__list");
 
-const createCards = () => {
+const createCards = (cards, profile) => {
+    
+    cards.forEach((item)=>{
+        cardContainer.insertAdjacentElement('afterbegin', createCard(item, {deleteCard, likeCard, openImagePopup}))
+    })
+    
+};
 
-    function renderCards(){
-        cardsArray.forEach((item) => {
-            const card = createCard(item, {deleteCard, likeCard, openImagePopup})
-            cardContainer.append(card)
-        })
-    }
-
-    renderCards()
-}
-
-export default createCards
+export default createCards;

@@ -20,3 +20,8 @@
     text-align: center;
   }
 }
+
+.avatar__container{
+  position: relative;
+}
+

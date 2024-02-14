@@ -1,4 +1,5 @@
 import { cardTemplate } from "../createCards"
+import { addCard } from "./api";
 
 export function deleteCard(item){
     item.remove();

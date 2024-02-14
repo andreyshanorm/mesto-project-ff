@@ -1,0 +1,23 @@
+.change__icon{
+    position: absolute;
+    top: 45%; 
+    left: 45%; 
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: visibility 0s 0.3s, opacity 0.3s;
+}
+
+.avatar__container:hover > .change__icon{
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+    transition: visibility 0s, opacity 0.3s;
+    cursor: pointer;
+}
+
+.avatar__container:hover > .profile__image{
+    filter: brightness(50%);
+}

@@ -25,7 +25,13 @@ const hideInputError = (formElement, inputElement, config) => {
 };
 
 const checkInputValidity = (formElement, inputElement) => {
-  const customValidate = /^[a-zA-Zа-яА-ЯЁё\s-]*$/;
+  const customValidate = /^[a-zA-Zа-яА-ЯЁё\s-\,]*$/;
+  if(inputElement.type === 'url'){
+    if (inputElement.validity.valid) {
+      hideInputError(formElement, inputElement, formValidationConfig);
+    } else showInputError(formElement, inputElement, formValidationConfig);
+  };
+  
   if (customValidate.test(inputElement.value)) {
     if (inputElement.validity.valid) {
         
@@ -68,9 +74,8 @@ export const enableValidation = (config) => {
 };
 
 
-const toggleButton = (form, config) => {
+export const toggleButton = (form, config) => {
     const buttonSubmit = form.querySelector(config.submitButtonSelector);
-    buttonSubmit.disabled = true;
     const inputList = Array.from(form.querySelectorAll(config.inputSelector))
     function findUnValid (inputList) {
         return inputList.some((inputElem)=>{
@@ -88,12 +93,21 @@ const toggleButton = (form, config) => {
 
 export const clearValidation = (form, config) => {
     const inputs = form.querySelectorAll('input')
-    inputs.forEach((item)=>{
+    if(inputs){
+      inputs.forEach((item)=>{
         item.classList.remove(config.inputErrorClass)
     })
+    }
     const errorMessages = form.querySelectorAll('span')
-    errorMessages.forEach((item)=>{
+    if(errorMessages){
+      errorMessages.forEach((item)=>{
         item.classList.remove(config.errorClass)
         item.textContent = ''
     })
+    }
+    const button = form.querySelector(config.submitButtonSelector)
+    if(button){
+      button.disabled = true;
+      button.classList.add('popup__button_disabled')
+    }
 }

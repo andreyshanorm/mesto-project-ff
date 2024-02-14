@@ -1,5 +1,5 @@
 import { handleFormSubmit } from "./handleFormSubmit"
-
+import { changeProfileInfo, apiConfig } from "../api"
 
 const nameContainer = document.querySelector('.profile__title')
 const jobContainer = document.querySelector('.profile__description')
@@ -17,6 +17,7 @@ const handleEditForm = (form) => {
             nameContainer,
             jobContainer
         }
+        changeProfileInfo(values.name, values.job, apiConfig)
         handleFormSubmit(evt, values)
     })
 }

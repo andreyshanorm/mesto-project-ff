@@ -1,4 +1,4 @@
-import { formValidationConfig, clearValidation } from "./validation"
+import { formValidationConfig, clearValidation} from "./validation"
 
 
 const imagePopup = document.querySelector('.popup_type_image')
@@ -31,6 +31,7 @@ export function openImagePopup(item){
 }
 
 export function openPopup(popup){
+    clearValidation(popup, formValidationConfig)
     document.addEventListener('keydown', handleEscape)
     setTimeout(()=>{popup.classList.add('popup_is-opened')}, 0)
     popup.classList.add('popup_is-animated')
