@@ -26,12 +26,7 @@ const hideInputError = (formElement, inputElement, config) => {
 
 const checkInputValidity = (formElement, inputElement) => {
   const customValidate = /^[a-zA-Zа-яА-ЯЁё\s-\,]*$/;
-  if(inputElement.type === 'url'){
-    if (inputElement.validity.valid) {
-      hideInputError(formElement, inputElement, formValidationConfig);
-    } else showInputError(formElement, inputElement, formValidationConfig);
-  };
-  
+ 
   if (customValidate.test(inputElement.value)) {
     if (inputElement.validity.valid) {
         
