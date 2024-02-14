@@ -1,5 +1,10 @@
 import { formValidationConfig, clearValidation} from "./validation"
 
+export function renderLoading (isLoading, form){
+    const currentBtn = form.querySelector('.popup__button')
+    isLoading ? currentBtn.textContent = 'Сохранение' : currentBtn.textContent = 'Сохранить'
+}
+
 
 const imagePopup = document.querySelector('.popup_type_image')
 const imagePopupImg = imagePopup.querySelector('.popup__image')

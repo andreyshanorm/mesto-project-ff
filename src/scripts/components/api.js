@@ -10,7 +10,7 @@ export const apiConfig = {
   }
 
 export const changeProfileInfo = (profileName, about, apiConfig) => {
-    fetch(`${apiConfig.baseUrl}/users/me`, {
+    return fetch(`${apiConfig.baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
         authorization: apiConfig.headers.authorization,
@@ -32,7 +32,7 @@ export const changeProfileInfo = (profileName, about, apiConfig) => {
 }
 
 export const changeAvatar = (avatarUrl, apiConfig) => {
-    fetch(`${apiConfig.baseUrl}/users/me/avatar`, {
+    return fetch(`${apiConfig.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
         authorization: apiConfig.headers.authorization,
@@ -72,7 +72,7 @@ export const getCards = () => {
 }
 
 export const addCard = (cardName, url, apiConfig) => {
-    fetch(`${apiConfig.baseUrl}/cards`, {
+    return fetch(`${apiConfig.baseUrl}/cards`, {
         method: "POST",
         headers: {
           authorization: apiConfig.headers.authorization,
