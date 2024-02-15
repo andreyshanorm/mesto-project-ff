@@ -45,7 +45,7 @@ export function openPopup(popup){
 
 
 export function closePopup(popup){
-    setTimeout(()=>{popup.classList.remove('popup_is-animated')}, 200)
+    setTimeout(()=>{popup.classList.remove('popup_is-animated')}, 1200)
     popup.classList.remove('popup_is-opened')
     clearValidation(popup, formValidationConfig)
     document.removeEventListener('keydown', handleEscape)
