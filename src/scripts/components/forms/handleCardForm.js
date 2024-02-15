@@ -16,9 +16,6 @@ export function handleCardForm(form) {
             link: addCardLinkInput.value
         }
         addCard(data.name, data.link, apiConfig)
-            .finally(() => {
-                renderLoading(false, form)
-            })
 
         addCardFormVar.reset()
         closePopup(newCardPopupVar)

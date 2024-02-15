@@ -27,7 +27,7 @@ export const changeProfileInfo = (profileName, about, apiConfig) => {
         };
     })
     .catch((err)=>{
-        console.log(err);
+        console.error(err);
     });
 }
 
@@ -46,9 +46,10 @@ export const changeAvatar = (avatarUrl, apiConfig) => {
         if(!data.ok){
             return Promise.reject(`Ошибка: ${data.status}`);
         };
+        return data.json()
     })
     .catch((err)=>{
-        console.log(err);
+        console.error(err);
     });;
 }
 
@@ -67,7 +68,7 @@ export const getCards = () => {
             return Promise.reject(`Ошибка: ${res.status}`);
         })
         .catch((err)=>{
-            console.log(err);
+            console.error(err);
         });
 }
 
@@ -87,9 +88,10 @@ export const addCard = (cardName, url, apiConfig) => {
           if(!data.ok){
               return Promise.reject(`Ошибка: ${data.status}`);
           };
+          return data.json()
       })
       .catch((err)=>{
-          console.log(err);
+          console.error(err);
       });;
 }
 
@@ -108,13 +110,14 @@ export const deleteCardQuery = (cardId) => {
       };
   })
   .catch((err)=>{
-      console.log(err);
+      console.error(err);
   });;
 }
 
 export const likeCardQuuery = (cardId, isLiked) => {
   return fetch(`${apiConfig.baseUrl}/cards/likes/${cardId}`, {
     method: isLiked ? "DELETE" : "PUT",
+    // 
     headers: {
       authorization: apiConfig.headers.authorization,
       "Content-Type": "application/json",
@@ -126,43 +129,14 @@ export const likeCardQuuery = (cardId, isLiked) => {
       }
       return res.json();
     })
-    .then((cardData) => {
-      const likeNumber = cardData.likes.length
-      return likeNumber
-    })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
 }
-
-export const getCurrentLikeNumber = () => {
-  return fetch(`${apiConfig.baseUrl}/cards`, {
-    method: "GET",
-    headers: {
-      authorization: apiConfig.headers.authorization,
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => {
-      if (!res.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then((cardData) => {
-      const likeNumber = cardData.map((item)=>{
-        return item.likes.length
-      })
-      return likeNumber
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
 
 export const getProfileInfo = () => {
     return fetch(`${apiConfig.baseUrl}/users/me`, {
+      method: "GET",
       headers: {
         authorization: apiConfig.headers.authorization,
       },
@@ -174,7 +148,7 @@ export const getProfileInfo = () => {
           return Promise.reject(`Ошибка: ${res.status}`);
       })
       .catch((err)=>{
-          console.log(err);
+          console.error(err);
       });
   };
 

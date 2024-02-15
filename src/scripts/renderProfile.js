@@ -1,6 +1,3 @@
-import { getProfileInfo } from "./components/api"
-
-
 
 export const renderProfile = (profile) => {
     const userName = document.querySelector('.profile__title')
@@ -9,5 +6,4 @@ export const renderProfile = (profile) => {
     userName.textContent = profile.name
     userInfo.textContent = profile.about
     userAvatar.src = profile.avatar
-
 }

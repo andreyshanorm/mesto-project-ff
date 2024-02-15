@@ -20,11 +20,11 @@ const handleEditForm = (form) => {
             nameContainer,
             jobContainer
         }
+        handleFormSubmit(evt, values)
         changeProfileInfo(values.name, values.job, apiConfig)
             .finally(()=>{
                 renderLoading(false, form)
             })
-        handleFormSubmit(evt, values)
     })
 }
 

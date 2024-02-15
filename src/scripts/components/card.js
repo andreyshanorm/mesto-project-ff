@@ -2,6 +2,8 @@ import { cardTemplate } from "../createCards"
 import { deleteCardQuery } from "./api";
 import { likeCardQuuery } from "./api";
 
+
+
 export function deleteCard(itemId, OwnerId){
     if(OwnerId === 'd8460b2ac8963f12a63f7957'){
         deleteCardQuery(itemId)
@@ -9,17 +11,30 @@ export function deleteCard(itemId, OwnerId){
     }
 }
 
-export function likeCard(cardId, likeButton, likesCount, currentLikeNumber){
-    const isLiked = likeButton.classList.contains('is-active')
-    likeCardQuuery(cardId, isLiked).then((likenumber) => {
-        likesCount.textContent = likenumber;
-        likeButton.classList.toggle('is-active')
-
+function updateLikes(personIdArray, cardLikeBtn, likecount){
+    const personInArray = personIdArray.includes('d8460b2ac8963f12a63f7957')
+    if(personInArray){
+        likecount.textContent = personIdArray.length
+        cardLikeBtn.classList.add('is-active')
+    }else{
+        cardLikeBtn.classList.remove('is-active')
+        likecount.textContent = personIdArray.length
     }
-    )
 }
 
-export function createCard(item, callBacks, currentLikeNumber){
+
+export function likeCard(card, likeButton, likeCount){
+    const isLiked = likeButton.classList.contains('is-active')
+    likeCardQuuery(card._id, isLiked)
+        .then((data) => {
+            const likesIdArray = data.likes.map((item) => {
+                return item._id
+            })
+            updateLikes(likesIdArray, likeButton, likeCount)
+        })
+}
+
+export function createCard(item, callBacks){
     const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
     const cardImage = cardElement.querySelector(".card__image");
     const cardLikeBtn = cardElement.querySelector('.card__like-button')
@@ -31,9 +46,12 @@ export function createCard(item, callBacks, currentLikeNumber){
         deleteBtn.style.display = 'none'
     }
 
+    const likePersonsId = item.likes.map((item) => {
+        return item._id
+    })
+    updateLikes(likePersonsId, cardLikeBtn, likeCount)
     deleteBtn.addEventListener('click', () => {callBacks.deleteCard(item._id, item.owner._id)})
-    cardLikeBtn.addEventListener('click', () => {callBacks.likeCard(item._id, cardLikeBtn, likeCount, item.likes.length)})
-
+    cardLikeBtn.addEventListener('click', () => {callBacks.likeCard(item, cardLikeBtn, likeCount)})
     
     likeCount.textContent = item.likes.length
     cardImage.src = `${item.link}`;

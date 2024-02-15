@@ -12,11 +12,13 @@ export function handleAvatarForm(form) {
         const data = {
             link: addAvatarLinkInput.value
         }
-        changeAvatar(data.link, apiConfig).finally(()=>{
-            console.log('финал');
-            renderLoading(false, form)
+        changeAvatar(data.link, apiConfig).then((updatedData) => {
+            setTimeout(() => {
+                renderProfile(updatedData)
+            }, 300)
+        }).finally(()=>{
+            renderLoading(false, form);
         })
-        // setTimeout(renderProfile, 200);
         closePopup(form)
     })
     
