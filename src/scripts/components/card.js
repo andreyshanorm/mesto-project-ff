@@ -19,6 +19,7 @@ function updateLikes(personIdArray, cardLikeBtn, likecount){
         cardLikeBtn.classList.add('is-active')
     }else{
         cardLikeBtn.classList.remove('is-active')
+        likecount.textContent = personIdArray.length
     }
 }
 
