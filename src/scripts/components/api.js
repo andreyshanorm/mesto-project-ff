@@ -97,21 +97,22 @@ export const addCard = (cardName, url, apiConfig) => {
 
 
 export const deleteCardQuery = (cardId) => {
-  fetch(`${apiConfig.baseUrl}/cards/${cardId}`, {
+  return fetch(`${apiConfig.baseUrl}/cards/${cardId}`, {
     method: "DELETE",
     headers: {
       authorization: apiConfig.headers.authorization,
       "Content-Type": "application/json",
-    }
+    },
   })
-  .then((data) => {
-      if(!data.ok){
-          return Promise.reject(`Ошибка: ${data.status}`);
-      };
-  })
-  .catch((err)=>{
+    .then((data) => {
+      if (!data.ok) {
+        return Promise.reject(`Ошибка: ${data.status}`);
+      }
+      return data.json();
+    })
+    .catch((err) => {
       console.error(err);
-  });;
+    });
 }
 
 export const likeCardQuuery = (cardId, isLiked) => {

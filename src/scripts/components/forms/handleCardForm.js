@@ -4,6 +4,8 @@ import { closePopup } from "../modal"
 import { addCard, apiConfig } from '../api';
 import { renderLoading } from '../modal';
 
+
+
 export function handleCardForm(form) {
     const addCardNameInput = form.querySelector('.popup__input_type_card-name')
     const addCardLinkInput = form.querySelector('.popup__input_type_url')
@@ -19,7 +21,7 @@ export function handleCardForm(form) {
 
         addCardFormVar.reset()
         closePopup(newCardPopupVar)
-        setTimeout(() => location.reload(), 100)
+        setTimeout(() => location.reload(), 200)
     })
 }
 

@@ -4,10 +4,11 @@ import { likeCardQuuery } from "./api";
 
 
 
-export function deleteCard(itemId, OwnerId){
+export function deleteCard(itemId, OwnerId, card){
     if(OwnerId === 'd8460b2ac8963f12a63f7957'){
-        deleteCardQuery(itemId)
-        setTimeout(() => location.reload(), 100)
+        deleteCardQuery(itemId).then(() => {
+            card.remove()
+        })
     }
 }
 
@@ -50,7 +51,7 @@ export function createCard(item, callBacks){
         return item._id
     })
     updateLikes(likePersonsId, cardLikeBtn, likeCount)
-    deleteBtn.addEventListener('click', () => {callBacks.deleteCard(item._id, item.owner._id)})
+    deleteBtn.addEventListener('click', () => {callBacks.deleteCard(item._id, item.owner._id, cardElement)})
     cardLikeBtn.addEventListener('click', () => {callBacks.likeCard(item, cardLikeBtn, likeCount)})
     
     likeCount.textContent = item.likes.length

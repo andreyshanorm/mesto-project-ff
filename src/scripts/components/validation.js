@@ -21,7 +21,6 @@ export const enableValidation = (config) => {
 /** Объявляю функцию слушателей всех инпутов */
 const addInputListners = (form, config) => {
   const inputList = Array.from(form.querySelectorAll(config.inputSelector));
-  const inputElement = form.querySelector('input')
   inputList.forEach(function (item) {
     item.addEventListener('input', (evt) => {
       checkInputValidity(form, item, config.inputErrorClass, config.errorClass)
@@ -44,7 +43,6 @@ function showInputError(formElement, inputElement, errorMessage, inputErrorClass
 }
 
 function hideInputError(formElement, inputElement, inputErrorClass, errorClass) {
-  console.log(formElement);
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   errorElement.classList.remove(errorClass);
   errorElement.textContent = '';
@@ -52,7 +50,6 @@ function hideInputError(formElement, inputElement, inputErrorClass, errorClass) 
 }
 
 function checkInputValidity(formElement, inputElement, inputErrorClass, errorClass) {
-  console.log(inputElement);
   if (inputElement.validity.patternMismatch) {
     inputElement.setCustomValidity(inputElement.dataset.customError);
   } else {
@@ -75,7 +72,6 @@ function checkInputValidity(formElement, inputElement, inputErrorClass, errorCla
 function toggleButtonState(form, inputList, submitButtonElementSelector, inactiveButtonClass) {
   const submitButtonElement = form.querySelector(`${submitButtonElementSelector}`)
   
-  console.log(submitButtonElement);
   if (hasInvalidInput(inputList)) {
     submitButtonElement.disabled = true;
     submitButtonElement.classList.add(inactiveButtonClass);
