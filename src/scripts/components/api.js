@@ -153,24 +153,4 @@ export const getProfileInfo = () => {
       });
   };
 
-  Promise.all([getProfileInfo(), getCards()])
-    .then((data) => {
-        const profile = {
-            _id: data[0]._id,
-            name: data[0].name,
-            about: data[0].about,
-            avatar: data[0].avatar
-        }
-
-        const cards = data[1].map((item)=>{
-            return {
-                _id: item._id,
-                name: item.name,
-                link: item.link,
-                likes: item.likes,
-                owner: item.owner
-            }
-        })
-        renderProfile(profile);
-        createCards(cards, profile)
-    })
+  
