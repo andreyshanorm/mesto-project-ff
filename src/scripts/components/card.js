@@ -14,12 +14,11 @@ export function deleteCard(itemId, OwnerId, card){
 
 function updateLikes(personIdArray, cardLikeBtn, likecount){
     const personInArray = personIdArray.includes('d8460b2ac8963f12a63f7957')
+    likecount.textContent = personIdArray.length
     if(personInArray){
-        likecount.textContent = personIdArray.length
         cardLikeBtn.classList.add('is-active')
     }else{
         cardLikeBtn.classList.remove('is-active')
-        likecount.textContent = personIdArray.length
     }
 }
 
