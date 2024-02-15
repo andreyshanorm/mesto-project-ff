@@ -2,7 +2,7 @@ import { newCardPopupVar, addCardFormVar } from "../../constants";
 import { closePopup } from "../modal";
 import { addCard, apiConfig } from "../api";
 import { renderLoading } from "../modal";
-import { formValidationConfig } from "../validation";
+
 
 export function handleCardForm(form) {
   const addCardNameInput = form.querySelector(".popup__input_type_card-name");
