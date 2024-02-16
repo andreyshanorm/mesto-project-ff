@@ -7,8 +7,8 @@ const openEditPopup = (popup, openBtn) => {
     
     openBtn.addEventListener('click', () => {
         openPopup(popup)
-        editFormElements.editFormNameInput.value = `${editFormElements.nameContainer.textContent}`
-        editFormElements.editFormJobInput.value = `${editFormElements.jobContainer.textContent}`
+        editFormElements.editFormNameInput.value = editFormElements.nameContainer.textContent
+        editFormElements.editFormJobInput.value = editFormElements.jobContainer.textContent
     });
 
     

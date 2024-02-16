@@ -1,5 +1,5 @@
 
-export const apiConfig = {
+const apiConfig = {
     baseUrl: 'https://nomoreparties.co/v1/wff-cohort-6',
     headers: {
       authorization: 'ae90b01c-4d6f-4fe0-9bc5-50249125af57',
@@ -7,7 +7,15 @@ export const apiConfig = {
     }
   }
 
-export const changeProfileInfo = (profileName, about, apiConfig) => {
+function handleResponse(res){
+  if(!res.ok){
+    return Promise.reject(`Ошибка: ${res.status}`);
+  };
+  return res.json()
+}
+
+
+export const changeProfileInfo = (profileName, about) => {
     return fetch(`${apiConfig.baseUrl}/users/me`, {
       method: "PATCH",
       headers: apiConfig.headers,
@@ -16,17 +24,12 @@ export const changeProfileInfo = (profileName, about, apiConfig) => {
         about: about,
       }),
     })
-    .then((data) => {
-        if(!data.ok){
-            return Promise.reject(`Ошибка: ${data.status}`);
-        };
+    .then((res) => {
+      return handleResponse(res)
     })
-    .catch((err)=>{
-        console.error(err);
-    });
 }
 
-export const changeAvatar = (avatarUrl, apiConfig) => {
+export const changeAvatar = (avatarUrl) => {
     return fetch(`${apiConfig.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: apiConfig.headers,
@@ -34,15 +37,9 @@ export const changeAvatar = (avatarUrl, apiConfig) => {
         avatar: avatarUrl,
       }),
     })
-    .then((data) => {
-        if(!data.ok){
-            return Promise.reject(`Ошибка: ${data.status}`);
-        };
-        return data.json()
+    .then((res) => {
+      return handleResponse(res)
     })
-    .catch((err)=>{
-        console.error(err);
-    });;
 }
 
 
@@ -51,17 +48,11 @@ export const getCards = () => {
         headers: apiConfig.headers,
       })
         .then((res) => {
-            if(res.ok){
-               return res.json()
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+          return handleResponse(res)
         })
-        .catch((err)=>{
-            console.error(err);
-        });
 }
 
-export const addCard = (cardName, url, apiConfig) => {
+export const addCard = (cardName, url) => {
     return fetch(`${apiConfig.baseUrl}/cards`, {
         method: "POST",
         headers: apiConfig.headers,
@@ -70,15 +61,9 @@ export const addCard = (cardName, url, apiConfig) => {
           link: url
         })
       })
-      .then((data) => {
-          if(!data.ok){
-              return Promise.reject(`Ошибка: ${data.status}`);
-          };
-          return data.json()
+      .then((res) => {
+        return handleResponse(res)
       })
-      .catch((err)=>{
-          console.error(err);
-      });;
 }
 
 
@@ -87,15 +72,9 @@ export const deleteCardQuery = (cardId) => {
     method: "DELETE",
     headers: apiConfig.headers,
   })
-    .then((data) => {
-      if (!data.ok) {
-        return Promise.reject(`Ошибка: ${data.status}`);
-      }
-      return data.json();
+    .then((res) => {
+      return handleResponse(res)
     })
-    .catch((err) => {
-      console.error(err);
-    });
 }
 
 export const likeCardQuuery = (cardId, isLiked) => {
@@ -105,14 +84,8 @@ export const likeCardQuuery = (cardId, isLiked) => {
     headers: apiConfig.headers,
   })
     .then((res) => {
-      if (!res.ok) {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-      return res.json();
+      return handleResponse(res)
     })
-    .catch((err) => {
-      console.error(err);
-    });
 }
 
 export const getProfileInfo = () => {
@@ -121,14 +94,8 @@ export const getProfileInfo = () => {
       headers: apiConfig.headers,
     })
       .then((res) => {
-          if(res.ok){
-             return res.json()
-          }
-          return Promise.reject(`Ошибка: ${res.status}`);
+        return handleResponse(res)
       })
-      .catch((err)=>{
-          console.error(err);
-      });
   };
 
   

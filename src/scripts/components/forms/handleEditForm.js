@@ -1,6 +1,6 @@
 import { handleFormSubmit } from "./handleFormSubmit"
-import { changeProfileInfo, apiConfig } from "../api"
-import { renderLoading } from "../modal"
+import { changeProfileInfo } from "../api"
+import { renderLoading } from "../../.."
 
 
 const nameContainer = document.querySelector('.profile__title')
@@ -14,17 +14,26 @@ export { nameContainer, jobContainer, editFormJobInput, editFormNameInput }
 const handleEditForm = (form) => {
     form.addEventListener('submit', (evt)=>{
         renderLoading(true, form)
-        const values = {
-            name: editFormNameInput.value,
+        let values = {
+            name: editFormNameInput.value, 
             job: editFormJobInput.value,
-            nameContainer,
-            jobContainer
         }
-        handleFormSubmit(evt, values)
-        changeProfileInfo(values.name, values.job, apiConfig)
-            .finally(()=>{
+        changeProfileInfo(values.name, values.job)
+        .then((data) => {
+            values = {
+                name: data.name,
+                job: data.about,
+                nameContainer,
+                jobContainer
+            }
+            handleFormSubmit(evt, values)
+        })
+        .catch((err) => {
+            console.error(err);
+        })    
+        .finally(()=>{
                 renderLoading(false, form)
-            })
+        })
     })
 }
 
