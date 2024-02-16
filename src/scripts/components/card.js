@@ -25,14 +25,14 @@ function updateLikes(personsIdArray, cardLikeBtn, likeNumber, userId){
 }
 
 
-export function likeCard(card, likeButton, likeNumber){
+export function likeCard(card, likeButton, likeNumber, userId){
     const isLiked = likeButton.classList.contains('is-active')
     likeCardQuuery(card._id, isLiked)
         .then((data) => {
             const likesIdArray = data.likes.map((item) => {
                 return item._id
             })
-            updateLikes(likesIdArray, likeButton, likeNumber)
+            updateLikes(likesIdArray, likeButton, likeNumber, userId)
         })
         .catch((err) => {
             console.error(err);
@@ -57,7 +57,7 @@ export function createCard(item, callBacks, userId){
         return item._id
     })
     updateLikes(likedPersonsId, cardLikeBtn, likeNumber, userId)
-    cardLikeBtn.addEventListener('click', () => {callBacks.likeCard(item, cardLikeBtn, likeNumber)})
+    cardLikeBtn.addEventListener('click', () => {callBacks.likeCard(item, cardLikeBtn, likeNumber, userId)})
     
     likeNumber.textContent = item.likes.length
     cardImage.src = `${item.link}`;
